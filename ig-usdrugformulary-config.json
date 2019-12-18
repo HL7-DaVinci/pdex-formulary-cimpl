@@ -1,0 +1,46 @@
+{
+    "projectName": "DaVinci Payer Data Exchange (PDex) US Drug Formulary",
+    "projectShorthand": "usdf",
+    "projectURL": "http://hl7.org/fhir/us/Davinci-drug-formulary",
+    "fhirURL": "http://hl7.org/fhir/us/Davinci-drug-formulary",
+    "entryTypeURL": "http://hl7.org/fhir/us/Davinci-drug-formulary",
+    "fhirTarget": "FHIR_R4",
+    "contentProfile": "ig-usdrugformulary-cp.txt",
+    "filterStrategy":
+	{
+        "filter": true,
+        "strategy": "namespace",
+        "target": ["usdf"]
+	},
+    "implementationGuide":
+	{
+        "npmName": "hl7.fhir.us.Davinci-drug-formulary",
+        "version": "0.2.0",
+        "ballotStatus": "STU Ballot",
+		"includeLogicalModels": false,
+		"includeModelDoc": false,
+        "indexContent": "IndexFolder_USDrugFormulary",
+        "examples": "examples_usdrugformulary",
+        "extraResources": "searchParameters_usdrugformulary",
+        "historyLink": "http://hl7.org/fhir/us/Davinci-drug-formulary/history.html",
+        "changesLink": "http://gforge.hl7.org/gf/project/fhir/tracker/?action=TrackerItemAdd&amp;tracker_id=677",
+		"primarySelectionStrategy":
+		{
+            "strategy": "namespace",
+			"primary": ["usdf"],
+            "hideSupporting": true
+		}
+    },
+    "copyrightYear": "2019+",
+    "publisher": "HL7 Pharmacy WG",
+    "contact": [
+        {
+            "telecom": [
+                {
+                    "system": "url",
+                    "value": "http://www.hl7.org/Special/committees/medication/"
+                }
+            ]
+        }
+    ]
+}

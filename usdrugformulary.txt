@@ -1,0 +1,181 @@
+Grammar:	DataElement 6.0
+Namespace:	usdf
+ Uses:  	shr.core, datatype, obf
+
+CodeSystem:  	RXN = http://www.nlm.nih.gov/research/umls/rxnorm
+
+
+Entry:	CoveragePlan
+//Parent: List
+Description:  "A health plan which contains links to administrative information,  a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models."
+Property:  PlanIdentifier 1..1
+Property: PlanIDType 1..1      
+Property: MarketingURL 0..1      
+Property: MarketingName 1..1      
+Property: FormularyURL 0..1      
+Property: SummaryURL 1..1 
+Property: CoveragePlanStatus 1..1      
+Property: CoveragePlanMode 1..1      
+Property: EmailPlanContact 0..1
+Property: Network 1..*      
+Property: DrugTierDefinition 1..*      
+Property: FormularyDrug 0..*      
+Property: LastUpdatedOn 0..1      
+
+ /*Element: PlanIDType
+  Description: "Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID"
+  Value: string
+
+  Element:  PlanIdentifier
+  Parent: Identifier
+    IdentifierString substitute PlanIDIdentifier
+
+  Element: PlanIDIdentifier
+  Parent: IdentifierString
+  Description: "Unique, 14-character, HIOS-generated Plan ID number. (Plan IDs must be unique, even across different markets.)"
+  Value: string
+*/
+Element: PlanIDType
+  Description: "Type of Plan ID. For all Marketplace plans this should be: HIOS-PLAN-ID"
+  Value: string
+
+  Group:  PlanIdentifier
+  Parent: Identifier
+  Description: "Unique, 14-character, HIOS-generated Plan ID number. (Plan IDs must be unique, even across different markets.)"
+   IdentifierString  1..1                    
+   Purpose 0..0              
+   Type 0..0                   
+   CodeSystem 0..0
+
+  Element: MarketingName
+  Description: "The name of the plan."
+  Value: string
+
+  Element: MarketingURL
+  Description: "The URL that goes directly to the plan brochure for the specific standard plan or plan variation"
+  Value: string 
+
+  Element: FormularyURL
+  Description: "The URL that goes directly to the formulary brochure for the specific standard plan or plan variation."
+  Value: string
+  
+  Element: SummaryURL
+  Description: "The URL that goes directly to the formulary brochure for the specific standard plan or plan variation."
+  Value: string
+
+  Element: EmailPlanContact
+  Description: "An email address for developers/public to report mistakes in the network and formulary data"
+  Value: string 
+
+  Element: Network
+  Description: "Array of Networks within a plan."
+  Value: string
+
+  Element: CoveragePlanMode
+  Description: "required by List"
+  Value: concept
+
+  Element: CoveragePlanStatus
+  Description: "Current Status of the Plan."
+  Value: concept
+
+  Element: FormularyStatus
+  Description: "Current Status of the Formulary."
+  Value: concept
+
+  Element: LastUpdatedOn
+  Description:  "The date that the health plan was last updated ISO 8601 format (e.g. YYYY-MM-DD)."
+  Value: dateTime
+
+  //Element: FormularyDrugEntry
+ // Description:  "A reference to a drug product that is included in a coverage plan."
+  //Value:  ref(FormularyDrug)
+
+  Group: DrugTierDefinition
+  Description: "A description of the drug tiers used by the formulary and how those tiers implement copay and coinsurance amounts. Drug tiers do not have any inherent meaning that is consistent across all formularies. Rather, each tier is defined using this element."
+  Property:  DrugTierID 1..1  
+  Property:  MailOrder 1..1  
+  Property:  CostSharing 0..*  
+
+ 
+    Element: DrugTierID
+    Description: "A code that describes the coverage status of a drug in a health plan (e.g., preferred generic, specialty, etc.)"
+    Value: concept from DrugTierVS (extensible) // CodeableConcept from DrugTierVS if covered
+
+    Element: DrugTierDescription
+    Description: "A short title describing the drug tier"
+    Value: string
+
+    Element: MailOrder
+    Description: "A Boolean indication of whether this drug tier supports a mail order pharmacy option"
+    Value: boolean
+
+    Group: CostSharing
+    Description: "Definition of the patients responsibility for a portion of the cost not covered by insurance for a particular pharmacy type within a drug tier"
+     Property: PharmacyType 1..1
+      Property: CopayAmount 1..1
+    Property: CopayOption 1..1
+    Property: CoInsuranceRate 1..1
+    Property: CoinsuranceOption 1..1
+      
+      Element: PharmacyType
+      Description: "A code that describes the network (in/out) status of a pharmacy, the duration of supply, and whether this is a mail order pharmacy."
+      Value: concept from PharmacyTypeVS (extensible)  // CodeableConcept from PharmacyTypeVS if covered 
+    
+      Element: CopayAmount
+      Description: "A standard, nominal fee charged for each prescription of a drug"
+      Value: Money
+
+      Element: CoInsuranceRate
+      Description: "A fee charged for each prescription of a drug, expressed as a percentage of that drug's overall cost"
+      Value: decimal
+      
+      Element: CopayOption
+      Description: "A code that qualifies the copay amount"
+      Value: concept from CopayOptionVS 
+      
+      Element: CoinsuranceOption
+      Description: "A code that qualifies the coinsurance rate"
+      Value: concept from CoinsuranceOptionVS 
+
+
+Entry: FormularyDrug
+//Parent: MedicationKnowledge
+Description: "Drug information which is part of a formulary."
+Property: DrugCode 1..1
+Property: DrugTierID 1..1    
+Property: PlanID 1..1    
+Property: PriorAuthorization  0..1    
+Property: StepTherapyLimit  0..1    
+Property: QuantityLimit  0..1    
+Property:  DrugClass 0..*    
+Property: DrugAlternatives 0..*    
+
+
+  Element: DrugCode
+  Description: "RxNorm Code for a Formulary Drug from an appropriate type"
+  Value: concept from  http://hl7.org/fhir/us/core/ValueSet/us-core-medication-codes (extensible)
+
+  Element: QuantityLimit
+  Description: "A Boolean indication of whether the coverage plan imposes a quantity limit on this drug."
+  Value: boolean
+
+  Element: StepTherapyLimit
+  Description: "A Boolean indication of whether the coverage plan imposes a step therapy limit on this drug."
+  Value: boolean
+
+  Element: PriorAuthorization
+  Description: "A Boolean indication of whether the coverage plan imposes a prior authorization requirement on this drug."
+  Value: boolean
+
+  Element: PlanID
+  Description: "Unique, 14-character, HIOS-generated Plan ID number. (Plan IDs must be unique, even across different markets.)"
+  Value: string
+
+  Element:  DrugClass
+  Description: "Classification of drug under a relevant, consumer-oriented, classification system."
+  Value:   concept
+
+  Element: DrugAlternatives
+  Description: "Generic or Branded Drugs included within the CoveragePlan's formulary that could be prescribed as alternatives to the current FormularyDrug."
+  Value: FormularyDrug

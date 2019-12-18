@@ -1,0 +1,38 @@
+Grammar:        ContentProfile 1.0
+/*---------------
+Levels of Data Element Support
+1) 1..1 = required 
+2) 0..1  MS = required if known
+3) 0..1 MS I = conditionally required  0..1 MS I  --- defer
+4) 0..1 MS I = conditionally required if known  0..1 MS I  --- defer
+See
+http://wiki.hl7.org/index.php?title=Conformance_Implementation_Manual
+------------------*/
+
+// Required fields don't need to be marked must-support so (currently) they are not included in this list. 
+
+Namespace: usdf
+
+    CoveragePlan:
+
+        PlanIdentifier MS
+        PlanIDType MS
+        MarketingURL MS
+        FormularyURL MS
+        SummaryURL MS
+        CoveragePlanMode MS
+        CoveragePlanStatus MS
+        EmailPlanContact MS
+        Network MS
+        DrugTierDefinition MS
+
+    FormularyDrug:
+        DrugTierID MS
+        PlanID MS
+        PriorAuthorization MS
+        StepTherapyLimit MS
+        QuantityLimit MS
+//       DrugClass MS
+//       DrugAlternatives MS
+
+ 
