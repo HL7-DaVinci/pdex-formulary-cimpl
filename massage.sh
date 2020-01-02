@@ -6,3 +6,6 @@ ruby massage.rb ~/cimpl/devr4_4_out/fhir/guide/resources/valueset-usdf-PharmacyT
 for i in ~/cimpl/devr4_4_out/fhir/guide/resources/*.json; do sed -i .bak -f ~/git/pdex-formulary-cimpl/fixfhirversion.sed $i; done
 for i in ~/cimpl/devr4_4_out/fhir/profiles/*.json; do sed -i .bak -f ~/git/pdex-formulary-cimpl/fixfhirversion.sed $i; done
 for i in ~/cimpl/devr4_4_out/fhir/logical/*.json; do sed -i .bak -f ~/git/pdex-formulary-cimpl/fixfhirversion.sed $i; done
+sed -i .bak -f ~/git/pdex-formulary-cimpl/fixversion.sed ~/cimpl/devr4_4_out/fhir/guide/ig.json
+sed -i .bak -f ~/git/pdex-formulary-cimpl/fixversion.sed ~/cimpl/devr4_4_out/fhir/guide/package-list.json
+rm ~/cimpl/devr4_4_out/fhir/logical/*.bak ~/cimpl/devr4_4_out/fhir/profiles/*.bak ~/cimpl/devr4_4_out/fhir/guide/resources/*.bak ~/cimpl/devr4_4_out/fhir/guide/*.json.bak
