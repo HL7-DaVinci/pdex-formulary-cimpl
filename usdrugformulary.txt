@@ -1,6 +1,6 @@
 Grammar:	DataElement 6.0
 Namespace:	usdf
- Uses:  	shr.core, datatype, obf
+ Uses:  	shr.core
 
 CodeSystem:  	RXN = http://www.nlm.nih.gov/research/umls/rxnorm
 
