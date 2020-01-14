@@ -39,11 +39,7 @@
       }
     ],
     "resourceType": "MedicationKnowledge",
-    "text": {
-      "status": "generated",
-      "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"></div>"
-    },
-    "meta": {
+       "meta": {
       "profile": [
         "http://hl7.org/fhir/us/Davinci-drug-formulary/StructureDefinition/usdf-FormularyDrug"
       ]

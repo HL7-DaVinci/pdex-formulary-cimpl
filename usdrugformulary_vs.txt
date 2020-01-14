@@ -13,7 +13,7 @@ Description:  "The drug tier of a particular medication in a health plan.  Base 
 #brand                      "Brand: Brand name drugs that cost more than ‘preferred brand’ drugs."
 #preferred-brand           "Preferred Brand: Brand name drugs"
 #non-preferred-brand        "Non-preferred Brand: Brand name drugs that cost more than ‘brand’ drugs."
-#zero-cost-share-preventative "Zero cost-share preventative: Preventive medications and products available at no cost."
+#zero-cost-share-preventive "Zero cost-share preventive: Preventive medications and products available at no cost."
 #medical-service           "Medical Service: Drugs that must be administered by a clinician or in a facility and may be covered under a medical benefit."
 
 

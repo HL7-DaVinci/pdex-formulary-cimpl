@@ -115,7 +115,7 @@ Element: PlanIDType
      Property: PharmacyType 1..1
       Property: CopayAmount 1..1
     Property: CopayOption 1..1
-    Property: CoInsuranceRate 1..1
+    Property: CoinsuranceRate 1..1
     Property: CoinsuranceOption 1..1
       
       Element: PharmacyType
@@ -126,7 +126,7 @@ Element: PlanIDType
       Description: "A standard, nominal fee charged for each prescription of a drug"
       Value: Money
 
-      Element: CoInsuranceRate
+      Element: CoinsuranceRate
       Description: "A fee charged for each prescription of a drug, expressed as a percentage of that drug's overall cost"
       Value: decimal
       

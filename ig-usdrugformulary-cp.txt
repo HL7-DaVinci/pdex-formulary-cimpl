@@ -11,6 +11,11 @@ http://wiki.hl7.org/index.php?title=Conformance_Implementation_Manual
 
 // Required fields don't need to be marked must-support so (currently) they are not included in this list. 
 
+Namespace: obf NP
+
+Namespace: shr.core NP
+
+
 Namespace: usdf
 
     CoveragePlan:
