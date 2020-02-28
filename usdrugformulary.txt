@@ -7,7 +7,7 @@ CodeSystem:  	RXN = http://www.nlm.nih.gov/research/umls/rxnorm
 
 Entry:	CoveragePlan
 //Parent: List
-Description:  "A health plan which contains links to administrative information,  a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models."
+Description:  "The CoveragePlan resource represents a health plan health plan and contains links to administrative information,  a list of formulary drugs covered under that plan, and a definition of drug tiers and their associated cost-sharing models."
 Property:  PlanIdentifier 1..1
 Property: PlanIDType 1..1      
 Property: MarketingURL 0..1      
@@ -141,7 +141,8 @@ Element: PlanIDType
 
 Entry: FormularyDrug
 //Parent: MedicationKnowledge
-Description: "Drug information which is part of a formulary."
+Description: "The FormularyDrug resource represents a drug that is part of a drug formulary.  A drug formulary is a list of brand-name and generic prescription drugs a health insurer 
+    agrees to pay for, at least partially, as part of health insurance coverage.In addition to identifying the drug by its RxNorm code, and the PlanID of the formulary, the FormularyDrug entry provides information on prescribing limitations, and optionally drug classification and alternatives. "
 Property: DrugCode 1..1
 Property: DrugTierID 1..1    
 Property: PlanID 1..1    
@@ -177,5 +178,5 @@ Property: DrugAlternatives 0..*
   Value:   concept
 
   Element: DrugAlternatives
-  Description: "Generic or Branded Drugs included within the CoveragePlan's formulary that could be prescribed as alternatives to the current FormularyDrug."
+  Description: "DrugAlternatives are Generic or Branded Drugs included within the CoveragePlan's formulary that could be prescribed as alternatives to the current FormularyDrug."
   Value: FormularyDrug
